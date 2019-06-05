@@ -47,7 +47,7 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
 let nav = document.querySelector("nav");
-var a=document.createElement("a");
+var a = document.createElement("a");
 let navItem = nav.querySelectorAll("a");
 navItem[0].innerHTML = siteContent["nav"]["nav-item-1"];
 navItem[1].innerHTML = siteContent["nav"]["nav-item-2"];
@@ -59,7 +59,9 @@ navItem[5].innerHTML = siteContent["nav"]["nav-item-6"];
 let cta = document.querySelector(".cta");
 cta.querySelector("h1").innerHTML = siteContent["cta"]["h1"];
 cta.querySelector("button").innerHTML = siteContent["cta"]["button"];
-cta.querySelector("#cta-img").setAttribute("src", siteContent["cta"]["img-src"]);
+cta
+  .querySelector("#cta-img")
+  .setAttribute("src", siteContent["cta"]["img-src"]);
 let mainContent = document.querySelector(".main-content");
 let topContent = mainContent
   .querySelector(".top-content")
@@ -102,10 +104,58 @@ contactP[2].innerHTML = siteContent["contact"]["email"];
 let footer = document.querySelector("footer");
 footer.querySelector("p").innerHTML = siteContent["footer"]["copyright"];
 
-
 //Change each navItem color to green:
-navItem.forEach(function (e) { return e.style.color = "green" });
+navItem.forEach(function(e) {
+  return (e.style.color = "green");
+});
 //Add new items to nav:
 nav.append("Last", a);
 nav.prepend("First", a);
 
+cta.querySelector("button").setAttribute("id", "go");
+
+cta.querySelector("div").prepend(document.createElement("button"));
+cta.querySelector("button").setAttribute("id", "cancel");
+cta.querySelector("div").prepend(document.createElement("button"));
+cta.querySelector("button").setAttribute("id", "box");
+cta.querySelector("#cancel").style.display = "none";
+cta.querySelector("#cancel").style.background = "red";
+cta.querySelector("#cancel").style.color = "white";
+cta.querySelector("#box").style.background = "green";
+cta.querySelector("#box").style.color = "white";
+cta.querySelector("#cancel").innerHTML="Cancel";
+cta.querySelector("#box").style.display = "none";
+cta.querySelector("#box").innerHTML="Update";
+
+cta.querySelector("div").prepend(document.createElement("input"));
+cta.querySelector("input").setAttribute("id", "newEntry");
+cta.querySelector("#newEntry").style.display = "none";
+
+rename = function() {
+  cta.querySelector("#newEntry").value = cta.querySelector("h1").innerHTML;
+  cta.querySelector("h1").style.display = "none";
+  cta.querySelector("#go").style.display = "none";
+  cta.querySelector("#newEntry").style.display = "inline";
+  cta.querySelector("#box").style.display = "inline";
+  cta.querySelector("#cancel").style.display = "inline";
+  cta.querySelector("#cancel").onclick = function() {
+    cta.querySelector("h1").style.display = "inline";
+    cta.querySelector("#go").style.display = "inline";
+    cta.querySelector("#newEntry").style.display = "none";
+    cta.querySelector("#box").style.display = "none";
+    cta.querySelector("#cancel").style.display = "none";
+    return;
+  }
+  cta.querySelector("#box").onclick = function() {
+    cta.querySelector("h1").style.display = "inline";
+    cta.querySelector("#go").style.display = "inline";
+    cta.querySelector("#newEntry").style.display = "none";
+    cta.querySelector("#box").style.display = "none";
+    cta.querySelector("#cancel").style.display = "none";
+    cta.querySelector("h1").innerHTML = cta.querySelector("#newEntry").value;
+    return;
+  };
+};
+
+cta.querySelector("#go").setAttribute("onclick", "rename()");
+cta.querySelector("h1").setAttribute("onclick", "rename()");
