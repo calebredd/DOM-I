@@ -33,7 +33,7 @@ const siteContent = {
   },
   contact: {
     "contact-h4": "Contact",
-    address: "123 Way 456 Street Somewhere, USA",
+    address: "123 Way 456 Street<br>Somewhere, USA",
     phone: "1 (888) 888-8888",
     email: "sales@greatidea.io"
   },
@@ -47,6 +47,7 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
 let nav = document.querySelector("nav");
+var a=document.createElement("a");
 let navItem = nav.querySelectorAll("a");
 navItem[0].innerHTML = siteContent["nav"]["nav-item-1"];
 navItem[1].innerHTML = siteContent["nav"]["nav-item-2"];
@@ -58,10 +59,7 @@ navItem[5].innerHTML = siteContent["nav"]["nav-item-6"];
 let cta = document.querySelector(".cta");
 cta.querySelector("h1").innerHTML = siteContent["cta"]["h1"];
 cta.querySelector("button").innerHTML = siteContent["cta"]["button"];
-cta
-  .querySelector("#cta-img")
-  .setAttribute("src", siteContent["cta"]["img-src"]);
-
+cta.querySelector("#cta-img").setAttribute("src", siteContent["cta"]["img-src"]);
 let mainContent = document.querySelector(".main-content");
 let topContent = mainContent
   .querySelector(".top-content")
@@ -75,7 +73,7 @@ topContent[1].querySelector("h4").innerHTML =
 topContent[1].querySelector("p").innerHTML =
   siteContent["main-content"]["about-content"];
 mainContent
-  .querySelector(".middle-img")
+  .querySelector("#middle-img")
   .setAttribute("src", siteContent["main-content"]["middle-img-src"]);
 
 let bottomContent = mainContent
@@ -103,3 +101,11 @@ contactP[2].innerHTML = siteContent["contact"]["email"];
 
 let footer = document.querySelector("footer");
 footer.querySelector("p").innerHTML = siteContent["footer"]["copyright"];
+
+
+//Change each navItem color to green:
+navItem.forEach(function (e) { return e.style.color = "green" });
+//Add new items to nav:
+nav.append("Last", a);
+nav.prepend("First", a);
+
