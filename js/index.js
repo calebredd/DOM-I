@@ -115,17 +115,23 @@ nav.prepend("First", a);
 cta.querySelector("button").setAttribute("id", "go");
 
 cta.querySelector("div").prepend(document.createElement("button"));
+cta.querySelector("button").setAttribute("id", "default");
+cta.querySelector("div").prepend(document.createElement("button"));
 cta.querySelector("button").setAttribute("id", "cancel");
 cta.querySelector("div").prepend(document.createElement("button"));
 cta.querySelector("button").setAttribute("id", "box");
+cta.querySelector("#default").style.display = "none";
 cta.querySelector("#cancel").style.display = "none";
+cta.querySelector("#default").style.background = "blue";
 cta.querySelector("#cancel").style.background = "red";
+cta.querySelector("#default").style.color = "white";
 cta.querySelector("#cancel").style.color = "white";
 cta.querySelector("#box").style.background = "green";
 cta.querySelector("#box").style.color = "white";
-cta.querySelector("#cancel").innerHTML="Cancel";
+cta.querySelector("#cancel").innerHTML = "Cancel";
 cta.querySelector("#box").style.display = "none";
-cta.querySelector("#box").innerHTML="Update";
+cta.querySelector("#box").innerHTML = "Update";
+cta.querySelector("#default").innerHTML = "Reset";
 
 cta.querySelector("div").prepend(document.createElement("input"));
 cta.querySelector("input").setAttribute("id", "newEntry");
@@ -138,19 +144,33 @@ rename = function() {
   cta.querySelector("#newEntry").style.display = "inline";
   cta.querySelector("#box").style.display = "inline";
   cta.querySelector("#cancel").style.display = "inline";
-  cta.querySelector("#cancel").onclick = function() {
+  cta.querySelector("#default").style.display = "inline";
+
+  cta.querySelector("#default").onclick = function() {
     cta.querySelector("h1").style.display = "inline";
     cta.querySelector("#go").style.display = "inline";
     cta.querySelector("#newEntry").style.display = "none";
     cta.querySelector("#box").style.display = "none";
     cta.querySelector("#cancel").style.display = "none";
+    cta.querySelector("#default").style.display = "none";
+    cta.querySelector("h1").innerHTML = siteContent["cta"]["h1"];
     return;
-  }
+  };
+  cta.querySelector("#cancel").onclick = function() {
+    cta.querySelector("h1").style.display = "inline";
+    cta.querySelector("#go").style.display = "inline";
+    cta.querySelector("#newEntry").style.display = "none";
+    cta.querySelector("#box").style.display = "none";
+    cta.querySelector("#default").style.display = "none";
+    cta.querySelector("#cancel").style.display = "none";
+    return;
+  };
   cta.querySelector("#box").onclick = function() {
     cta.querySelector("h1").style.display = "inline";
     cta.querySelector("#go").style.display = "inline";
     cta.querySelector("#newEntry").style.display = "none";
     cta.querySelector("#box").style.display = "none";
+    cta.querySelector("#default").style.display = "none";
     cta.querySelector("#cancel").style.display = "none";
     cta.querySelector("h1").innerHTML = cta.querySelector("#newEntry").value;
     return;
