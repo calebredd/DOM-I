@@ -53,6 +53,7 @@ let blink = window.setInterval(function() {
 
 document.querySelector("#start").setAttribute("onclick", "count()");
 count = function() {
+  digit.forEach(function (e) { e.style.color = "black"; });
   clearInterval(blink);
   colon.style.color = "black";
   secondTens.innerHTML = 0;
@@ -81,6 +82,7 @@ count = function() {
       msTens.innerHTML = 0;
       msHundreds.innerHTML = 0;
       clearInterval(timer);
+      digit.forEach(function(e){e.style.color="red";});
       return;
     }
     document
