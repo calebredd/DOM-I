@@ -93,7 +93,7 @@ count = function() {
     }
     document
       .querySelector("#stop")
-      .setAttribute("onclick", `clearInterval(${timer}); start.style.display = "inline";`);
+      .setAttribute("onclick", `clearInterval(${timer}); start.style.display = "inline";start.innerHTML = "Reset";`);
   }, 10);
   return;
 };
