@@ -40,6 +40,7 @@ start.style.background = "green";
 stop.style.background = "red";
 start.style.borderRadius = "5px";
 stop.style.borderRadius = "5px";
+stop.style.display = "none";
 
 let blink = window.setInterval(function() {
   let seconds = new Date().getSeconds();
@@ -53,8 +54,10 @@ let blink = window.setInterval(function() {
 
 document.querySelector("#start").setAttribute("onclick", "count()");
 count = function() {
+  stop.style.display = "inline";
   digit.forEach(function (e) { e.style.color = "black"; });
   clearInterval(blink);
+  start.style.display="none";
   colon.style.color = "black";
   secondTens.innerHTML = 0;
   secondOnes.innerHTML = 0;
@@ -83,11 +86,13 @@ count = function() {
       msHundreds.innerHTML = 0;
       clearInterval(timer);
       digit.forEach(function(e){e.style.color="red";});
+      start.style.display = "inline";
+      stop.style.display = "none";
       return;
     }
     document
       .querySelector("#stop")
-      .setAttribute("onclick", `clearInterval(${timer})`);
+      .setAttribute("onclick", `clearInterval(${timer}); start.style.display = "inline";`);
   }, 10);
   return;
 };
