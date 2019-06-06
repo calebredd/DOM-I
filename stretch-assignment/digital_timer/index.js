@@ -87,6 +87,7 @@ count = function() {
       clearInterval(timer);
       digit.forEach(function(e){e.style.color="red";});
       start.style.display = "inline";
+      start.innerHTML = "Reset";
       stop.style.display = "none";
       return;
     }
